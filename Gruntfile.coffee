@@ -6,15 +6,15 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON("package.json")
 
     config:
-      src: 'develop'
-      srcCommon: '<%= config.src %>/common'
+      src: 'src'
+      srcCommon: '<%= config.src %>/assets'
       dist: 'www'
-      distCommon: '<%= config.dist %>/common'
+      distCommon: '<%= config.dist %>/assets'
       template: 'templates'
 
     assemble:
       options:
-        assets: '<%= config.dist %>/assets'
+        assets: '<%= config.distCommon %>'
         partials: '<%= config.template %>/includes/**/*.{hbs,md}'
         layout: '<%= config.template %>/layouts/default.hbs'
         data: '<%= config.template %>/data/**/*.{json,yml}'
