@@ -10,14 +10,36 @@ module.exports = (grunt) ->
       srcCommon: '<%= config.src %>/common'
       dist: 'www'
       distCommon: '<%= config.dist %>/common'
-      template: 'template'
+      template: 'templates'
 
     assemble:
       options:
-        assets: 'assets'
-        partials: '<%= config.template %>/include/**/*.{hbs,md}'
-        layout: '<%= config.template %>/layout/default.hbs'
-        data: '<%= config.template %>/data/*.{json,yml}'
+        assets: '<%= config.dist %>/assets'
+        partials: '<%= config.template %>/includes/**/*.{hbs,md}'
+        layout: '<%= config.template %>/layouts/default.hbs'
+        data: '<%= config.template %>/data/**/*.{json,yml}'
+
+      dev:
+        options:
+          dev: true
+          production: false
+        files: [
+          expand: true
+          cwd: '<%= config.template %>/pages'
+          src: '**/*.hbs'
+          dest: '<%= config.dist %>/'
+        ]
+
+      production:
+        options:
+          dev: false
+          production: true
+        files: [
+          expand: true
+          cwd: '<%= config.template %>/pages'
+          src: '**/*.hbs'
+          dest: '<%= config.dist %>/'
+        ]
 
     autoprefixer:
       options:
@@ -116,6 +138,10 @@ module.exports = (grunt) ->
         atBegin: false
         livereload: true
 
+      assemble:
+        files: '<%= config.template %>/pages/**/*.hbs'
+        task: 'assemble:dev'
+
       coffee:
         files: '<%= coffee.compile.src %>'
         tasks: 'coffee'
@@ -129,9 +155,6 @@ module.exports = (grunt) ->
         tasks: 'slim'
 
   grunt.registerTask 'default', [], ->
-    grunt.task.run 'dev'
-
-  grunt.registerTask 'dev', [], ->
     grunt.loadNpmTasks 'grunt-contrib-connect'
     grunt.task.run 'connect', 'watch'
 
@@ -157,3 +180,8 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-cssmin'
     grunt.loadNpmTasks 'grunt-contrib-imagemin'
     grunt.task.run 'cssmin', 'imagemin'
+
+  grunt.registerTask 'as', [], ->
+    grunt.loadNpmTasks 'assemble'
+    # grunt.loadNpmTasks 'grunt-contrib-watch'
+    grunt.task.run 'assemble:dev'
