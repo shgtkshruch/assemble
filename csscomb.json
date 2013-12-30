@@ -1,0 +1,22 @@
+{
+  "exclude": ["node_modules/**"],
+  "verbose": true,
+
+  "alwys-semicolon": true,
+  "block-indent": true,
+  "colon-space": true,
+  "color-case": "lower",
+  "color-shorthand": true,
+  "combinator-space": true,
+  "element-case": "lower",
+  "eof-newline": true,
+  "leading-zero": false,
+  "remove-empty-rulesets": true,
+  "rule-indent": true,
+  "stick-brace": true,
+  "strip-spaces": true,
+  "unitless-zero": true,
+  "vendor-prefix-align": true
+}
+
+
