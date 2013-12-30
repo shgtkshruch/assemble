@@ -10,6 +10,14 @@ module.exports = (grunt) ->
       srcCommon: '<%= config.src %>/common'
       dist: 'www'
       distCommon: '<%= config.dist %>/common'
+      template: 'template'
+
+    assemble:
+      options:
+        assets: 'assets'
+        partials: '<%= config.template %>/include/**/*.{hbs,md}'
+        layout: '<%= config.template %>/layout/default.hbs'
+        data: '<%= config.template %>/data/*.{json,yml}'
 
     autoprefixer:
       options:
