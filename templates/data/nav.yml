@@ -1,0 +1,6 @@
+- title: top page
+  url: www/index.html
+- title: doc index page
+  url: www/doc/index.html
+- title: blog index page
+  url: www/doc/blog/index.html

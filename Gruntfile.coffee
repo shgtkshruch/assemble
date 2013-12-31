@@ -28,7 +28,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: '<%= config.template %>/pages'
           src: '**/*.hbs'
-          dest: '<%= config.tmp %>'
+          dest: '<%= config.dist %>'
         ]
 
       production:
@@ -39,7 +39,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: '<%= config.template %>/pages'
           src: '**/*.hbs'
-          dest: '<%= config.tmp %>/'
+          dest: '<%= config.dist %>/'
         ]
 
     autoprefixer:
@@ -124,7 +124,7 @@ module.exports = (grunt) ->
         brace_style: 'expand'
       files: 
         expand: true
-        cwd: '<%= config.tmp %>'
+        cwd: '<%= config.dist %>'
         src: ['**/*.html']
         dest: '<%= config.dist %>'
 
@@ -200,6 +200,7 @@ module.exports = (grunt) ->
   grunt.registerTask 'as', [], ->
     grunt.loadNpmTasks 'assemble'
     grunt.loadNpmTasks 'grunt-prettify'
-    grunt.loadNpmTasks 'grunt-contrib-clean'
-    # grunt.loadNpmTasks 'grunt-contrib-watch'
-    grunt.task.run 'assemble:dev', 'prettify', 'clean'
+    grunt.loadNpmTasks 'grunt-contrib-sass'
+    grunt.loadNpmTasks 'grunt-contrib-watch'
+    grunt.loadNpmTasks 'grunt-contrib-coffee'
+    grunt.task.run 'watch:assemble', 'watch:sass', 'watch:coffee', 'prettify' 

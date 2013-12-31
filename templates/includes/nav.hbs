@@ -1,0 +1,9 @@
+<ul>
+  {{#each nav}}
+    {{#is ../page.dest url}}
+      <li style="color: red;">{{title}}</li>
+    {{else}}
+      <li><a href="{{relative ../../page.dest ../url}}">{{title}}</a></li>
+    {{/is}}
+  {{/each}}
+</ul>
