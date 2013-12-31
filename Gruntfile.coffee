@@ -11,6 +11,7 @@ module.exports = (grunt) ->
       dist: 'www'
       distCommon: '<%= config.dist %>/assets'
       template: 'templates'
+      tmp: 'tmp'
 
     assemble:
       options:
@@ -27,7 +28,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: '<%= config.template %>/pages'
           src: '**/*.hbs'
-          dest: '<%= config.dist %>/'
+          dest: '<%= config.tmp %>'
         ]
 
       production:
@@ -38,7 +39,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: '<%= config.template %>/pages'
           src: '**/*.hbs'
-          dest: '<%= config.dist %>/'
+          dest: '<%= config.tmp %>/'
         ]
 
     autoprefixer:
@@ -59,6 +60,9 @@ module.exports = (grunt) ->
           scroll: true
           links: true
           forms: true
+
+    clean:
+      ['<%= config.tmp %>']
 
     coffee:
       options:
@@ -111,6 +115,18 @@ module.exports = (grunt) ->
           src: ['**/*.{png,jpg,gif}']
           dest: '<%= config.distCommon %>/img/'
         ]
+
+    prettify:
+      options:
+        condense: true
+        indent: 2
+        indent_char: ' '
+        brace_style: 'expand'
+      files: 
+        expand: true
+        cwd: '<%= config.tmp %>'
+        src: ['**/*.html']
+        dest: '<%= config.dist %>'
 
     sass:
       dist:
@@ -183,5 +199,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'as', [], ->
     grunt.loadNpmTasks 'assemble'
+    grunt.loadNpmTasks 'grunt-prettify'
+    grunt.loadNpmTasks 'grunt-contrib-clean'
     # grunt.loadNpmTasks 'grunt-contrib-watch'
-    grunt.task.run 'assemble:dev'
+    grunt.task.run 'assemble:dev', 'prettify', 'clean'
