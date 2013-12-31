@@ -122,7 +122,7 @@ module.exports = (grunt) ->
         indent: 2
         indent_char: ' '
         brace_style: 'expand'
-      files: 
+      files:
         expand: true
         cwd: '<%= config.dist %>'
         src: ['**/*.html']
@@ -156,19 +156,19 @@ module.exports = (grunt) ->
 
       assemble:
         files: '<%= config.template %>/pages/**/*.hbs'
-        task: 'assemble:dev'
+        tasks: 'assemble:dev'
 
       coffee:
         files: '<%= coffee.compile.src %>'
         tasks: 'coffee'
 
       sass:
-        files: '<%= config.srcCommon %>/sass/*.sass'
+        files: '<%= config.srcCommon %>/sass/**/*.sass'
         tasks: 'sass'
 
-      slim:
-        files: '<%= config.src %>/**/*.slim'
-        tasks: 'slim'
+      # slim:
+      #   files: '<%= config.src %>/**/*.slim'
+      #   tasks: 'slim'
 
   grunt.registerTask 'default', [], ->
     grunt.loadNpmTasks 'grunt-contrib-connect'
@@ -204,4 +204,4 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-connect'
-    grunt.task.run 'connect', 'watch:assemble', 'watch:sass', 'watch:coffee', 'prettify' 
+    grunt.task.run 'connect', 'watch', 'prettify'
