@@ -17,7 +17,8 @@ module.exports = (grunt) ->
       options:
         assets: '<%= config.distCommon %>'
         partials: '<%= config.template %>/includes/**/*.{hbs,md}'
-        layout: '<%= config.template %>/layouts/default.hbs'
+        layoutdir: '<%= config.template %>/layouts/'
+        layout: 'default.hbs'
         data: '<%= config.template %>/data/**/*.{json,yml}'
 
       dev:
@@ -199,9 +200,12 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'as', [], ->
     grunt.loadNpmTasks 'assemble'
-    grunt.loadNpmTasks 'grunt-prettify'
     grunt.loadNpmTasks 'grunt-contrib-sass'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-connect'
-    grunt.task.run 'connect', 'watch', 'prettify'
+    grunt.task.run 'connect', 'watch'
+
+  grunt.registerTask 'pr', [], ->
+    grunt.loadNpmTasks 'grunt-prettify'
+    grunt.task.run 'prettify'
