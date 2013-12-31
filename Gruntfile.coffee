@@ -172,11 +172,14 @@ module.exports = (grunt) ->
       #   tasks: 'slim'
 
   grunt.registerTask 'default', [], ->
+    grunt.task.run 'connect', 'assemble'
+
+  grunt.registerTask 'connect', [], ->
     grunt.loadNpmTasks 'grunt-contrib-connect'
-    grunt.task.run 'connect', 'watch'
+    grunt.task.run 'connect'
 
   grunt.registerTask 'watch', [], ->
-    grunt.loadNpmTasks 'grunt-slim'
+    # grunt.loadNpmTasks 'grunt-slim'
     grunt.loadNpmTasks 'grunt-contrib-sass'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
@@ -184,7 +187,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'sync', [], ->
     grunt.loadNpmTasks 'grunt-browser-sync'
-    grunt.task.run 'browser_sync', 'watch'
+    grunt.task.run 'browser_sync', 'assemble'
 
   grunt.registerTask 'style', [], ->
     grunt.loadNpmTasks 'grunt-csscss'
@@ -198,13 +201,9 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-imagemin'
     grunt.task.run 'cssmin', 'imagemin'
 
-  grunt.registerTask 'as', [], ->
+  grunt.registerTask 'assemble', [], ->
     grunt.loadNpmTasks 'assemble'
-    grunt.loadNpmTasks 'grunt-contrib-sass'
-    grunt.loadNpmTasks 'grunt-contrib-watch'
-    grunt.loadNpmTasks 'grunt-contrib-coffee'
-    grunt.loadNpmTasks 'grunt-contrib-connect'
-    grunt.task.run 'connect', 'watch'
+    grunt.task.run 'watch'
 
   grunt.registerTask 'pr', [], ->
     grunt.loadNpmTasks 'grunt-prettify'
