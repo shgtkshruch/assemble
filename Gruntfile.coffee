@@ -203,4 +203,5 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-sass'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
-    grunt.task.run 'watch:assemble', 'watch:sass', 'watch:coffee', 'prettify' 
+    grunt.loadNpmTasks 'grunt-contrib-connect'
+    grunt.task.run 'connect', 'watch:assemble', 'watch:sass', 'watch:coffee', 'prettify' 
