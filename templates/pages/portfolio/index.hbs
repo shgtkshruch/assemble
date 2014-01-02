@@ -1,0 +1,20 @@
+---
+title: つくったもの
+url: www/portfolio/index.html
+portfolio: true
+---
+<section>
+  {{#each article}}
+  <article class="article-list">
+    <a href="{{relative ../page.dest url}}">
+      <div class="article-text">
+        <h1>{{{title}}}</h1>
+        <p>{{{text}}}</p>
+      </div>
+      <div class="article-image">
+        <img src="{{../assets}}/{{img}}" width="300", height="163" alt="">
+      </div>
+    </a>
+  </article>
+  {{/each}}
+</section>

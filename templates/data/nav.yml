@@ -1,6 +1,8 @@
-- title: top page
+- title: ホーム
   url: www/index.html
-- title: doc index page
-  url: www/doc/index.html
-- title: blog index page
-  url: www/doc/blog/index.html
+- title: わたしたちについて
+  url: www/about/index.html
+- title: つくったもの
+  url: www/portfolio/index.html
+- title: おといあわせ
+  url: www/contact/index.html

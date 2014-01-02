@@ -1,0 +1,19 @@
+---
+title: おといあわせ
+---
+<article class="article-detail">
+ <h1 class="page-title">{{title}}</h1>
+ <p>このサイトについてのご意見・ご質問は、おといあわせフォームより受け付けています。</p>
+  <p class="btn"><a href="#">おといあわせフォーム</a></p>
+  {{#each member}}
+    <section>
+      <h2 class="heading-typeb">{{name}}</h2>
+      <ul>
+       <li>ブログ<a href="{{blog-url}}">{{blog-url}}</a></li>
+       {{#if twitter-id}}
+         <li>twitter<a href="{{twitter-url}}">{{twitter-id}}</a></li>
+       {{/if}}
+      </ul>
+    </section>
+  {{/each}}
+</article>

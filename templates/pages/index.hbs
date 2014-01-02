@@ -1,4 +1,39 @@
 ---
-title: トップページだよ
+title: komorikomasha（こもりこましゃ）
+home: true
 ---
-toppage!!
+<section class="main-visual">
+  <ul class="bxslider">
+    {{#each home-index}}
+    <li> 
+      <div class="mainVisualText">
+        <h1>{{{title}}}</h1>
+        <p>{{{caption}}}</p>
+      </div>
+      <img src="{{../assets}}/img/{{img980}}" width="980" height="500" alt="">
+    </li>
+    {{/each}}
+  </ul>
+</section>
+
+<section class="portfolio-index">
+{{#each home-index}}
+  <article>
+    <a href="{{relative ../page.dest url}}"><img src="{{../assets}}/img/{{img300}}" width="300" height="163" alt=""></a>
+    <h2><a href="{{relative page.dest url}}">{{{title}}}</a></h2>
+    <p>{{{caption}}}</p>
+  </article>
+{{/each}}
+</section>
+
+<section class="news">
+  <h1>おしらせ</h1>
+  <table>
+    {{#each news}}
+    <tr>
+      <th><time datetime="{{datetime}}">{{date}}</time></th>
+      <td>{{text}}</td>
+    </tr>
+    {{/each}}
+  </table>
+</section>

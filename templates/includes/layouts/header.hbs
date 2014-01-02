@@ -1,0 +1,13 @@
+<header class="page-head">
+ <h1 id="page-head">komorikomasha</h1>
+ <p>1人じゃできないことも、力を合わせればできる。やってみたいをカタチにする、3人の楽しいものづくり。</p>
+<ul>
+  {{#each nav}}
+    {{#is ../page.dest url}}
+      <li style="color: red;">{{title}}</li>
+    {{else}}
+      <li><a href="{{relative ../../page.dest ../url}}">{{title}}</a></li>
+    {{/is}}
+  {{/each}}
+</ul>
+</header>

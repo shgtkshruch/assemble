@@ -1,0 +1,12 @@
+{{#if portfolio}}
+  {{> local-nav}}
+{{/if}}
+<h2>お知らせ</h2>
+<ul>
+  {{#each side-nav}}
+    <li>
+      <time>{{time}}</time>
+      {{text}}
+    </li>
+  {{/each}}
+</ul>
